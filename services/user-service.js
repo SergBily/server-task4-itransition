@@ -82,7 +82,7 @@ class UserService {
   }
 
   async blockAndUnblockUser(id, access) {
-    if (access === false) {
+    if (access === 'blocked') {
       const tt = await UserModel.updateOne({ _id: id }, { $set: { status: 'inactive' } });
     }
     return await UserModel.updateOne({ _id: id }, { $set: { access } });
