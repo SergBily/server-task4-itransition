@@ -21,18 +21,12 @@ app.use(cors({
 app.use("/", authRoutes);
 app.use(erorrMiddleware);
 
-const start = async () => {
-  try {
-    await mongoose.connect(process.env.DB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    app.listen(PORT, () => {
-      console.log("server work");
-    });
-  } catch (e) {
-    console.log(e);
-  }
+const start =  () => {
+  mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  app.listen(PORT);
 }
 
 start();
